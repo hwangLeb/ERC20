@@ -22,4 +22,8 @@ contract LEVI is ERC20 {
     function burn(uint256 amount) external {
         _burn(msg.sender, amount);
     }
+    function transfer(address to, uint256 amount) public override returns (bool) {
+        require(to != address(0), "ERC20: transfer to the zero address");
+        return super.transfer(to, amount);
+    }
 }
